@@ -22,12 +22,14 @@ export function saveProject(project){
     return 0;
 }
 
-export function saveTask(projectTitle, taskTitle, description, dueDate){
+export function saveTask(projectTitle, taskTitle, description, dueDate, priority){
     const projects = JSON.parse(localStorage.getItem("projects") || '[]');
     const task = {
         taskTitle,
         description,
         dueDate,
+        priority,
+        isDone: false,
     }
 
     // Save the task under its specific project
@@ -111,7 +113,7 @@ export function updateProject(oldProjectTitle, newProjectTitle, newProjectDescri
     return true;
 }
 
-export function updateTask(projectTitle, oldTaskTitle, newTaskTitle, newDescription, newDueDate) {
+export function updateTask(projectTitle, oldTaskTitle, newTaskTitle, newDescription, newDueDate, newPriority) {
     const projects = JSON.parse(localStorage.getItem('projects') || '[]');
     
     // Find the project
@@ -136,6 +138,7 @@ export function updateTask(projectTitle, oldTaskTitle, newTaskTitle, newDescript
     project.task[taskIndex].taskTitle = newTaskTitle;
     project.task[taskIndex].description = newDescription;
     project.task[taskIndex].dueDate = newDueDate;
+    project.task[taskIndex].priority = newPriority;
     localStorage.setItem('projects', JSON.stringify(projects));
     
     return true;
