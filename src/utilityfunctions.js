@@ -7,12 +7,11 @@ export function createProject(title, description){
 }
 
 export function saveProject(project){
-    const projects = JSON.parse(localStorage.getItem("projects")  || '[]'); // Projects a saved inside array for easy later access
+    const projects = JSON.parse(localStorage.getItem("projects")  || '[]'); // Projects are saved inside array for easy later access
 
-    // Return 0 if the project title has been used before
     for (let i = 0; projects.length > i; i++){
         if (project.title === projects[i].title){
-            return 1;
+            return 1; // Return 1 if project title already exists
         }
     }
 
@@ -59,7 +58,7 @@ export function getProjects(){
 export function deleteProject(projectTitle){
     const projects = JSON.parse(localStorage.getItem('projects') || '[]');
 
-    // Creates a new array of elements that doesn't match with the inputted project title
+    // Creates a new array excluding the project with the given projecTitle
     let newProjects = projects.filter(project => project.title !== projectTitle);
 
     if (newProjects.length < projects.length){
