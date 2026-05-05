@@ -7,19 +7,20 @@ export function createProject(title, description){
 }
 
 export function saveProject(project){
-    const projects = JSON.parse(localStorage.getItem("projects")  || '[]'); // Projects a saved inside array for easy later access
+    const projects = JSON.parse(localStorage.getItem("projects")  || '[]'); // Projects are saved inside array for easy later access
 
-    // Return 0 if the project title has been used before
+    // Return false if the project title has been used before
     for (let i = 0; projects.length > i; i++){
         if (project.title === projects[i].title){
-            return 1;
+            alert("Project name used before.")
+            return false;
         }
     }
 
     projects.push(project);
     localStorage.setItem('projects', JSON.stringify(projects))
 
-    return 0;
+    return true;
 }
 
 export function saveTask(projectTitle, taskTitle, description, dueDate, priority){
@@ -32,6 +33,7 @@ export function saveTask(projectTitle, taskTitle, description, dueDate, priority
         isDone: false,
     }
 
+    /**
     // Save the task under its specific project
     for (let project of projects){
         if (project.title === projectTitle){
@@ -46,7 +48,25 @@ export function saveTask(projectTitle, taskTitle, description, dueDate, priority
             localStorage.setItem("projects", JSON.stringify(projects));
             return true;
         }
+    } */
+
+    // Save the task under its specific project
+    for (let project of projects){
+        if (project.title === projectTitle){
+
+            // Check if task Title has been used before
+            for (let existingTask of project.task){
+                if (existingTask.taskTitle === taskTitle){
+                    alert("Task name used before.")
+                    return false;
+                }
+            }
+            project.task.push(task);
+            localStorage.setItem("projects", JSON.stringify(projects));
+            return true;
+        }
     }
+
 
     return false;
 }
@@ -142,4 +162,47 @@ export function updateTask(projectTitle, oldTaskTitle, newTaskTitle, newDescript
     localStorage.setItem('projects', JSON.stringify(projects));
     
     return true;
+}
+
+
+export function markDone(projectTitle,taskTitle){
+    const projectList = getProjects();
+
+    for (let project of projectList){
+        if(project.title === projectTitle){
+            const taskList = project.task;
+
+            for (let task of taskList){
+                if(task.taskTitle === taskTitle){
+                    task.isDone = true;
+
+                    // Update the task "isDone" as "true" in the localStorage.
+                    localStorage.setItem('projects', JSON.stringify(projectList));
+                    
+                    return;
+                }
+            }
+        }
+    }
+}
+
+export function markUnDone(projectTitle,taskTitle){
+    const projectList = getProjects();
+
+    for (let project of projectList){
+        if(project.title === projectTitle){
+            const taskList = project.task;
+
+            for (let task of taskList){
+                if(task.taskTitle === taskTitle){
+                    task.isDone = false;
+        
+                    // Update the task "isDone" as "false" in the localStorage.
+                    localStorage.setItem('projects', JSON.stringify(projectList));
+                    
+                    return;
+                }
+            }
+        }
+    }
 }

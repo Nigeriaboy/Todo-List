@@ -9,22 +9,60 @@
 
     <header>
         <div id="logo">TO-DO</div>
-        <div id="menu">
-            <div id="addbtn" class="btn" >
-                Add
-            </div>
-            <div id="options">
-                <div id="addprojectbtn">Project</div>
-                <div id="addtaskbtn">Task</div>
-            </div>
-            <div id="project" class="btn" >Projects</div>
-            <div id="task" class="btn" >Tasks</div>
-        </div>
     </header>
-
+    
     <main>
-        
-        
+        <div id="left-side-bar">
+            <p>PROJECTS :</p>
+            <div id="projects">
+
+            </div>
+        </div> 
+        <div id="right-side-bar">
+            <div id="addprojectbtn" class="btn" ><p>+ Add Project</p></div>
+            <div id="project-display">
+                <div id="project-name">Project NAME</div>
+                <div id="project-description">PROJECT DESCRIPTION</div>
+            </div>
+            <div id="task-display">
+                <div style="border-left: solid var(--high-priority);">
+                    <p class="task-name">Task Name</p>
+                    <p class="description">Description</p>
+                    <p class="due-date">due-date</p>
+                    <p class="open">></p>
+                    <p class="priority">priority</p>
+                    <p class="done">done</p>
+                </div>
+
+                <div style="border-left: solid var(--low-priority);">
+                    <p class="task-name">Task Name</p>
+                    <p class="description">Description</p>
+                    <p class="due-date">due-date</p>
+                    <p class="open">^</p>
+                    <p class="priority">priority</p>
+                    <p class="done">Done</p>
+                </div>
+
+            </div>
+
+            <div id="addtaskbtn" class="btn" ><p>+ Add Task</p></div>
+        </div>
     </main>
+
+    <!--<div class="taskInfoPopUpContainer">
+        <div id="task-container">
+            <div id="left">
+                <div class="task-title">MATHEMATICS</div>
+                <div class="task-description"><span>DESCRIPTION:</span> I HAVE TO DO THIS F**KING MONSTER</div>
+                <div class="task-due-date"><span>DUE-DATE:</span> 2025/04/29 , 2 more days</div>
+            </div>
+            <div id="right">
+                <div class="task-priority">LOW</div>
+                <div class="task-edit">EDIT</div>
+                <div class="task-delete">DELETE</div>
+            </div>
+        </div>
+    </div>-->
+
 </body>
 </html>

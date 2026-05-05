@@ -1,7 +1,18 @@
+:root {
+    --primary-color: rgb(9, 236, 236);
+    --secondary-color: rgb(3, 42, 100);
+    --tertiary-color: rgb(11, 35, 73);
+    --general-color: rgb(161, 146, 60);
+    --high-priority: rgb(214, 56, 56);
+    --medium-priority: rgb(243, 127, 127);
+    --low-priority: rgb(255, 191, 191);
+}
+
 body {
-    display: grid;
+    position: relative;
     margin: 0;
     padding: 0;
+    width: 100%;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(3, 42, 100);
 }
@@ -9,84 +20,280 @@ body {
 
 
 header {
-    height: 7vh;
+    height: (20px,7vh,30px);
     width: 100%;
     background-color: rgb(2, 29, 70);
     border-bottom: solid 1px rgb(9, 236, 236);
-    display: flex;
-    align-items: center;
 }
 
 #logo {
-    width: 30%;
     margin-left: clamp(10px, 2vw, 50px);
     font-size: clamp(23px, 5vw, 40px);
     font-weight: bold;
     color: rgb(9, 236, 236);
-}
-
-#menu {
-    display: flex;
-    width: 70%;
-    color: white;
-    position: relative;
-    font-size: clamp(10px, 3vw, 20px);
-}
-
-#menu > div:not(#options) {
-    margin-left: clamp(4px, 1vw, 50px);
-    padding: 7px 12px 7px 12px;
-    border-radius: 25px;
-    transition:  ease-in-out 0.3s;
-}
-
-#menu > .btn:hover {
-    cursor: pointer;
-    background-color: rgb(9, 236, 236);
-    color: rgb(2, 29, 70);
-}
-
-
-#menu > #options {
-    display: none;
-    margin: 0;
-    position: absolute;
-    z-index: 1;
-    top: 40px;
-    left: clamp(5px,3vw,70px);
-    background-color: rgb(2, 29, 70);
-}
-
-#menu > #options > div {
-    margin-top: 7px;
-    transition:  ease-in-out 0.3s;
-    padding: 10px;
-}
-
-#menu > #options > div:hover {
-    background-color: rgb(9, 236, 236);
-    color: rgb(2, 29, 70);
-    cursor:pointer;
+    width: 100%;
 }
 
 main {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    color: white;
+    width: 100%;
 }
 
-main > #container {
+#left-side-bar {
+    width: 15vw;
+    padding: 0px 17px 0px 17px;
+    height: 100vh;
+    color: white;
+    background-color: rgb(2, 29, 70);
+    font-weight: bold;
+    text-align: center;
+}
+
+#left-side-bar > p {
+    margin-top: 25px;
+    color: var(--primary-color);
+    font-size: clamp(7px,2vw,15px);
+    cursor: pointer;
+
+}
+
+#left-side-bar > #projects > p {
+    font-size: clamp(6px,2vw,15px);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.5s;
+}
+
+#left-side-bar > #projects > p:hover {
+    cursor: pointer;
+}
+
+
+#right-side-bar {
+    width: 85vw;
+    position: relative;
+}
+
+#form-container, .taskInfoPopUpContainer {
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    position: fixed;
+    top: 0; left: 0;
+}
+
+#form-container > #container {
     width: clamp(280px, 50vw, 354px);
+    height: 430px;
     padding: 15px 25px 15px 25px;
     border: solid rgb(9, 236, 236) 1px;
     background-color: rgb(2, 29, 70);
+    color: white;
 }
+
+
+
+#addprojectbtn {
+    font-weight: bold;
+    display: flex;
+    justify-content: right;   
+}
+
+#addtaskbtn {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+#addtaskbtn > p, #addprojectbtn > p {
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(9, 236, 236);
+    transition: all 0.5s;
+    font-size: clamp(10px,1vw,20px);
+    text-align: right;
+    width: fit-content;
+}
+
+#addtaskbtn {
+    margin-top: 20px;
+}
+
+#addtaskbtn > p:hover,#addprojectbtn > p:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 7px rgb(9, 236, 236);
+}
+
+#project-display {
+    margin-top: 50px;
+    font-size: 16px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#project-display > #project-name {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+#project-display > #project-description {
+    margin-bottom: 10px;
+    font-size: clamp(12px, 1vw,13px);
+    font-weight: normal;
+    padding: 10px;
+    text-align: center;
+}
+
+#project-display, #task-display {
+    color: white;
+    font-weight: bold;
+}
+
+#task-display {
+    display: grid;
+    justify-content: center;
+}
+
+#task-display > div {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: clamp(240px, 60vw,700px);
+    padding: 5px 12px 5px 12px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: var(--tertiary-color);
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+#task-display > div > .task-name {
+    font-size:clamp(6px, 2vw,16px);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#task-display > div > .task-name, #task-display > div > .description  {
+    width: 20%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#task-display > div > p  {
+    font-weight: normal;
+    align-self: center;
+    font-size: clamp(5px, 2vw,16px);
+}
+
+#task-display > div > .done, #task-display > div > .undone {
+    background-color: var(--primary-color);
+    color: black;
+    transition: all 0.5s;
+    text-align: center;
+    padding: 4px 10px 4px 10px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#task-display > div > .done:hover, #task-display > div > .undone:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 7px rgb(9, 236, 236);
+}
+
+#task-display > div > .open:hover {
+    cursor: pointer;
+}
+
+/** Task Pop-up-box style**/
+
+.taskInfoPopUpContainer {
+    display: flex;
+}
+
+.taskInfoPopUpContainer > #task-container {
+    border: solid;
+    /**width: clamp(280px, 50vw, 354px);**/
+    width: fit-content;
+    padding: 15px 25px 15px 25px;
+    border: solid rgb(9, 236, 236) 1px;
+    background-color: rgb(2, 29, 70);
+    color: rgb(224, 224, 224);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    font-size: clamp(13px, 1vw, 15px);
+}
+
+#task-container > #left  {
+    width: clamp(200px, 50vw, 354px);
+    overflow-wrap: anywhere;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+#task-container > #left > div > span, .task-title {
+    font-weight: bold;
+}
+
+#task-container > #left > div > span {
+    color: white;
+}
+
+#task-container > #left > .closeBtn {
+    background-color: var(--secondary-color);
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+#task-container > #left > .closeBtn:hover {
+    cursor: pointer;
+}
+
+.task-title {
+    color: var(--primary-color);
+}
+
+#task-container > #right {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#task-container > #right > .task-priority {
+    font-weight: bold;
+    color: black;
+    padding: 1px 3px;
+}
+
+.task-edit > svg, .task-delete > svg{
+    width: clamp(20px, 2vw,30px);
+}
+
+.task-edit > svg:hover, .task-delete > svg:hover {
+    cursor: pointer;
+}
+
+
+
+
+
+/** Form style**/
 
 form {
     display: grid;
 }
+
+
 
 .caption {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -94,23 +301,43 @@ form {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
-    color: rgb(9, 236, 236)
+    color: rgb(9, 236, 236);
 }
 
 input, select {
     height: 30px;
     margin-bottom: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    border-bottom: solid 2px rgb(9, 236, 236);
+    border-right: solid 2px rgb(9, 236, 236);
 }
 
-#project-submit, #task-submit {
-    display: block;
-    margin: 1rem  auto;
-    width: 150px;
+
+#cancel-add-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cancel-add-container > .cancel-btn,
+#cancel-add-container > #project-submit,
+#cancel-add-container > #task-submit {
+    width: 120px;
+    margin-top: 20px;
     transition: all 0.5s;
+    font-weight: bold;
+    border: none;
+    color: white;
+    border-bottom: solid 2px rgb(9, 236, 236);
+    background-color: transparent;
 }
 
-#project-submit:hover, #task-submit:hover {
+#cancel-add-container > .cancel-btn:hover,
+#cancel-add-container > #project-submit:hover,
+#cancel-add-container > #task-submit:hover {
+    cursor: pointer;
     color: rgb(2, 29, 70);
     background-color: rgb(9, 236, 236);
-    border: none;
 }
