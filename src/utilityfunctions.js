@@ -79,7 +79,7 @@ export function getProjects(){
 export function deleteProject(projectTitle){
     const projects = JSON.parse(localStorage.getItem('projects') || '[]');
 
-    // Creates a new array of elements that doesn't match with the inputted project title
+    // Creates a new array excluding the project with the given projecTitle
     let newProjects = projects.filter(project => project.title !== projectTitle);
 
     if (newProjects.length < projects.length){
