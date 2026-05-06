@@ -126,7 +126,7 @@ taskDisplay.addEventListener('click', (e) => {
         
     for (let project of projectList){
         if (project.title === clickedBtn.dataset.projectTitle){
-            const taskList = project.task
+            const taskList = project.task;
 
             for (let task of taskList){
                 const taskDiv = taskBarCreator(task.taskTitle,task.description,task.dueDate,task.priority,task.isDone,project.title);

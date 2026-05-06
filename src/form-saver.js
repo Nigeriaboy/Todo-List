@@ -83,7 +83,8 @@ export function displayTaskForm(){
             saveTask(projectTitle.textContent,taskTitle.value,taskDescription.value,dueDate.value,priority.value);
                 
             // Dynamically update the task-displayer after successfully adding a new task
-            taskDisplay.append(taskBarCreator(taskTitle.value,taskDescription.value,dueDate.value,priority.value,false))
+            taskDisplay.append(taskBarCreator(taskTitle.value,taskDescription.value,dueDate.value,priority.value,false, projectTitle.textContent));
+
 
             // Empty the input boxes
             taskTitle.value = '';
