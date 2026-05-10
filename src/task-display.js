@@ -130,7 +130,7 @@ taskDisplay.addEventListener('click', (e) => {
 
             for (let task of taskList){
                 const taskDiv = taskBarCreator(task.taskTitle,task.description,task.dueDate,task.priority,task.isDone,project.title);
-                    taskDisplay.append(taskDiv);
+                taskDisplay.append(taskDiv);
             }
         }
     }

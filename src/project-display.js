@@ -7,7 +7,7 @@ export function displayProject(){
 
     // Clear the projects Element and re-update it
     projectsContainer.innerHTML = '';
-    let counter =  1;
+    let counter =  0;
 
     for (let project of projectsList){
         const projectParagraph = document.createElement('p');
@@ -18,4 +18,6 @@ export function displayProject(){
         projectsContainer.appendChild(projectParagraph);
         counter++;
     }
+
+
 }
